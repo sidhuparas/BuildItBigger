@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back"
-    tools:context=".JokeActivity">
+    tools:context=".MainActivity">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay"
@@ -15,9 +16,10 @@
         app:elevation="6dp">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_main"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
+            android:minHeight="10dp"
             android:layout_marginTop="15dp">
 
             <TextView
@@ -32,6 +34,10 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_joke" />
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_bar"
+        layout="@layout/fragment_main" />
 
 </android.support.design.widget.CoordinatorLayout>
