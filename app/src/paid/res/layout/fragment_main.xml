@@ -1,5 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,16 +9,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/instructions_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/instructions" />
+    <include layout="@layout/common_layout"/>
 
-    <Button
+    <ImageView
+        android:id="@+id/bean"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/instructions_text_view"
-        android:onClick="tellJoke"
-        android:text="@string/button_text" />
+        android:src="@drawable/mr_bean"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"/>
+
+    <com.jpardogo.android.googleprogressbar.library.GoogleProgressBar
+        android:id="@+id/progress_bar_google"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_above="@id/bean"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
+
 </RelativeLayout>

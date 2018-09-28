@@ -7,7 +7,10 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.jpardogo.android.googleprogressbar.library.GoogleProgressBar;
+
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,10 +22,6 @@ public class MainActivity extends AppCompatActivity {
             w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                     WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         }
-    }
-
-    public void tellJoke(View view) {
-        new EndpointsAsyncTask().execute(this);
     }
 }
 

@@ -13,10 +13,11 @@ import com.parassidhu.jokemania.JokeActivity;
 import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 
 class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
     private static MyApi myApiService = null;
-    private Context context;
+    private WeakReference<Context> context;
 
     @Override
     protected String doInBackground(Context... params) {
@@ -38,7 +39,7 @@ class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
             myApiService = builder.build();
         }
 
-        context = params[0];
+        context = new WeakReference<>(params[0]);
 
         try {
             return myApiService.getJoke().execute().getData();
@@ -50,8 +51,12 @@ class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        Intent intent = new Intent(context, JokeActivity.class);
-        intent.putExtra(JokeActivity.JOKE_TEXT, result);
-        context.startActivity(intent);
+        Context contextVar = context.get();
+
+        if (contextVar!=null) {
+            Intent intent = new Intent(contextVar, JokeActivity.class);
+            intent.putExtra(JokeActivity.JOKE_TEXT, result);
+            contextVar.startActivity(intent);
+        }
     }
 }
